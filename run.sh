@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-if [[ -z "${ANTHROPIC_API_KEY:-}" ]]; then
-  echo "Error: ANTHROPIC_API_KEY is not set."
+if [[ -z "${ANTHROPIC_CLAUDE_CODE_AUTH_KEY:-}" ]]; then
+  echo "Error: ANTHROPIC_CLAUDE_CODE_AUTH_KEY is not set."
   echo "Make sure it is exported in your ~/.zshrc from macOS Keychain."
   exit 1
 fi
@@ -16,7 +16,7 @@ podman run -it --rm \
   -v "$HOME/.gitconfig":/root/.gitconfig:ro,z \
   ${SSH_AUTH_SOCK:+-v "$SSH_AUTH_SOCK":/ssh-agent:z} \
   ${SSH_AUTH_SOCK:+-e SSH_AUTH_SOCK=/ssh-agent} \
-  -e ANTHROPIC_API_KEY \
+  -e ANTHROPIC_CLAUDE_CODE_AUTH_KEY \
   -w /workspace \
   claude-dockerized \
   claude --dangerously-skip-permissions

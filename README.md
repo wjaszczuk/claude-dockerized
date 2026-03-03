@@ -5,9 +5,9 @@ Run Claude Code in a Podman container with agent teams enabled.
 ## Prerequisites
 
 - Podman installed
-- `ANTHROPIC_API_KEY` in macOS Keychain, exported in `~/.zshrc`:
+- `ANTHROPIC_CLAUDE_CODE_AUTH_KEY` in macOS Keychain, exported in `~/.zshrc`:
   ```bash
-  export ANTHROPIC_API_KEY="$(security find-generic-password -s anthropic-api-key -a $USER -w)"
+  export ANTHROPIC_CLAUDE_CODE_AUTH_KEY="$(security find-generic-password -s anthropic-api-key -a $USER -w)"
   ```
 - SSH agent running with your keys loaded (`ssh-add -l` to verify)
 
