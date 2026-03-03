@@ -10,7 +10,7 @@ fi
 podman run -it --rm \
   -v "$(pwd)":/workspace:z \
   -v "$HOME/.gitconfig":/root/.gitconfig:ro,z \
-  -e ANTHROPIC_CLAUDE_CODE_AUTH_KEY \
+  -e ANTHROPIC_API_KEY="$ANTHROPIC_CLAUDE_CODE_AUTH_KEY" \
   -w /workspace \
   claude-dockerized \
   claude --dangerously-skip-permissions
