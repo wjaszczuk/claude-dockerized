@@ -9,7 +9,7 @@ cp "$CLAUDE_DIR/CLAUDE.md" "$SCRIPT_DIR/global-CLAUDE.md"
 
 echo "Syncing skills from $CLAUDE_DIR/skills/..."
 rm -rf "$SCRIPT_DIR/skills"
-cp -r "$CLAUDE_DIR/skills" "$SCRIPT_DIR/skills"
+cp -rL "$CLAUDE_DIR/skills" "$SCRIPT_DIR/skills"
 
 echo "Syncing plugins from $CLAUDE_DIR/plugins/..."
 rm -rf "$SCRIPT_DIR/plugins"
