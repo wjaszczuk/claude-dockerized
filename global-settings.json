@@ -1,0 +1,29 @@
+{
+  "teammateMode": "tmux",
+  "dangerouslySkipPermissions": true,
+  "permissions": {
+    "allow": [
+      "Bash(yarn lint)",
+      "Bash(yarn lint:fix)",
+      "Bash(yarn typescript)",
+      "Bash(yarn test)",
+      "Bash(yarn test:ci)",
+      "Bash(yarn test:coverage)",
+      "Bash(yarn start)",
+      "Bash(yarn start:storybook)",
+      "Bash(yarn storybook-generate)",
+      "Bash(yarn prettier)",
+      "Bash(yarn podinstall)",
+      "Bash(yarn clean:build)",
+      "Bash(yarn)",
+      "Bash(android)"
+    ],
+    "deny": [
+      "Bash(curl:*)",
+      "Read(./.env)",
+      "Read(./.env.local)",
+      "Read(./.env.test)",
+      "Read(./.env.test.local)"
+    ]
+  }
+}
