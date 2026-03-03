@@ -17,11 +17,13 @@ RUN corepack enable
 
 RUN npm install -g @anthropic-ai/claude-code
 
-RUN mkdir -p /root/.claude/skills /root/.claude/plugins
+RUN mkdir -p /home/node/.claude/skills /home/node/.claude/plugins /workspace \
+    && chown -R node:node /home/node/.claude /workspace
 
-COPY global-settings.json /root/.claude/settings.json
-COPY global-CLAUDE.md /root/.claude/CLAUDE.md
-COPY skills/ /root/.claude/skills/
-COPY plugins/ /root/.claude/plugins/
+COPY --chown=node:node global-settings.json /home/node/.claude/settings.json
+COPY --chown=node:node global-CLAUDE.md /home/node/.claude/CLAUDE.md
+COPY --chown=node:node skills/ /home/node/.claude/skills/
+COPY --chown=node:node plugins/ /home/node/.claude/plugins/
 
+USER node
 WORKDIR /workspace
