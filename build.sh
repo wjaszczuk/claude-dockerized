@@ -11,6 +11,10 @@ echo "Syncing skills from $CLAUDE_DIR/skills/..."
 rm -rf "$SCRIPT_DIR/skills"
 cp -r "$CLAUDE_DIR/skills" "$SCRIPT_DIR/skills"
 
+echo "Syncing plugins from $CLAUDE_DIR/plugins/..."
+rm -rf "$SCRIPT_DIR/plugins"
+cp -r "$CLAUDE_DIR/plugins" "$SCRIPT_DIR/plugins"
+
 echo "Building image claude-dockerized..."
 podman build -t claude-dockerized "$SCRIPT_DIR"
 

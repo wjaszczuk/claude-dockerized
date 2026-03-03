@@ -1,4 +1,14 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "enabledPlugins": {
+    "claude-hud@claude-hud": true
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash -c 'node \"$(ls -td ~/.claude/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | head -1)dist/index.js\"'"
+  },
   "teammateMode": "tmux",
   "dangerouslySkipPermissions": true,
   "permissions": {
