@@ -11,8 +11,6 @@
     "type": "command",
     "command": "bash -c 'node \"$(ls -td ~/.claude/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | head -1)dist/index.js\"'"
   },
-  "hasCompletedOnboarding": true,
-  "theme": "dark-daltonism",
   "teammateMode": "tmux",
   "dangerouslySkipPermissions": true,
   "permissions": {

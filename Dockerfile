@@ -21,6 +21,7 @@ RUN mkdir -p /home/node/.claude/skills /home/node/.claude/plugins /workspace \
     && chown -R node:node /home/node/.claude /workspace
 
 COPY --chown=node:node global-settings.json /home/node/.claude/settings.json
+COPY --chown=node:node global-config.json /home/node/.claude/.config.json
 COPY --chown=node:node global-CLAUDE.md /home/node/.claude/CLAUDE.md
 COPY --chown=node:node skills/ /home/node/.claude/skills/
 COPY --chown=node:node plugins/ /home/node/.claude/plugins/
