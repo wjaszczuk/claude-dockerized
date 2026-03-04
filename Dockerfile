@@ -24,3 +24,5 @@ RUN curl -fsSL https://claude.ai/install.sh | bash
 ENV PATH="/home/node/.local/bin:${PATH}"
 
 WORKDIR /workspace
+
+CMD ["claude", "--dangerously-skip-permissions"]
