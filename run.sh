@@ -22,4 +22,4 @@ $RUNTIME run -it --rm \
   -v claude-config:/home/node/.claude:z \
   -v claude-agents:/home/node/.agents:z \
   -w /workspace \
-  "$IMAGE"
+  "$IMAGE" "$@"
