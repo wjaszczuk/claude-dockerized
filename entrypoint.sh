@@ -2,6 +2,7 @@
 set -euo pipefail
 
 # Enable corepack shims for this user
+mkdir -p ~/.local/bin
 corepack enable --install-directory ~/.local/bin 2>/dev/null || true
 
 # Install claude on first run
@@ -11,9 +12,10 @@ if [ ! -f ~/.local/bin/claude ]; then
   echo "Claude Code installed."
 fi
 
-# Install skills on first run
+# Install skills on first run (cd ~ so skills go to ~/.agents not ./agents)
 if [ ! -f ~/.claude/.skills-installed ]; then
   echo "First run: installing skills..."
+  cd ~
   npx skills add -y https://github.com/vercel-labs/skills --skill find-skills
   npx skills add -y https://github.com/vercel-labs/agent-skills \
     --skill vercel-react-best-practices --skill vercel-react-native-skills
@@ -34,7 +36,6 @@ if [ ! -f ~/.claude/.skills-installed ]; then
     --skill writing-skills \
     --skill dispatching-parallel-agents \
     --skill finishing-a-development-branch
-  npx skills add -y https://github.com/jarrodwatts/claude-hud --skill claude-hud
   touch ~/.claude/.skills-installed
   echo "Skills installed."
 fi
@@ -48,5 +49,8 @@ fi
 if [ -f ~/.claude/_auth.json ] && [ ! -L ~/.claude.json ]; then
   ln -sf ~/.claude/_auth.json ~/.claude.json
 fi
+
+mkdir -p ~/.cache/tmp
+export TMPDIR=~/.cache/tmp
 
 exec "$@"
