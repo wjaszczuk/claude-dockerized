@@ -15,10 +15,12 @@ RUN apt-get update && apt-get install -y \
 
 RUN corepack enable
 
-RUN npm install -g @anthropic-ai/claude-code
-
-RUN mkdir -p /home/node/.claude/skills /home/node/.claude/plugins /workspace \
-    && chown -R node:node /home/node/.claude /workspace
+RUN mkdir -p /workspace && chown node:node /workspace
 
 USER node
+
+RUN curl -fsSL https://claude.ai/install.sh | bash
+
+ENV PATH="/home/node/.local/bin:${PATH}"
+
 WORKDIR /workspace
