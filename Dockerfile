@@ -23,6 +23,19 @@ RUN curl -fsSL https://claude.ai/install.sh | bash
 
 ENV PATH="/home/node/.local/bin:${PATH}"
 
+RUN npx skills add https://github.com/vercel-labs/skills --skill find-skills && \
+    npx skills add https://github.com/vercel-labs/agent-skills \
+      --skill vercel-react-best-practices,vercel-react-native-skills && \
+    npx skills add https://github.com/callstackincubator/agent-skills \
+      --skill react-native-best-practices && \
+    npx skills add https://github.com/obra/superpowers \
+      --skill brainstorming,systematic-debugging,writing-plans,test-driven-development,executing-plans,requesting-code-review,using-superpowers,subagent-driven-development,receiving-code-review,verification-before-completion,using-git-worktrees,writing-skills,dispatching-parallel-agents,finishing-a-development-branch && \
+    npx skills add https://github.com/jarrodwatts/claude-hud --skill claude-hud
+
+COPY --chown=node:node entrypoint.sh /home/node/entrypoint.sh
+RUN chmod +x /home/node/entrypoint.sh
+
 WORKDIR /workspace
 
+ENTRYPOINT ["/home/node/entrypoint.sh"]
 CMD ["claude", "--dangerously-skip-permissions"]
