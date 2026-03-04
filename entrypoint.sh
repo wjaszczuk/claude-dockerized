@@ -40,6 +40,22 @@ if [ ! -f ~/.claude/.skills-installed ]; then
   echo "Skills installed."
 fi
 
+# Write default settings if not present
+if [ ! -f ~/.claude/settings.json ]; then
+  mkdir -p ~/.claude
+  cat > ~/.claude/settings.json <<'EOF'
+{
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "OTEL_METRICS_EXPORTER": "otlp",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "effortLevel": "medium",
+  "skipDangerousModePermissionPrompt": true
+}
+EOF
+fi
+
 # If claude wrote .claude.json as a real file, move it into the volume
 if [ -f ~/.claude.json ] && [ ! -L ~/.claude.json ]; then
   mv ~/.claude.json ~/.claude/_auth.json
