@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+VERSION="$(cat "$SCRIPT_DIR/VERSION")"
+IMAGE="claude-dockerized:$VERSION"
+
 if command -v docker &>/dev/null; then
   RUNTIME=docker
 elif command -v podman &>/dev/null; then
@@ -18,4 +22,4 @@ $RUNTIME run -it --rm \
   -v "$HOME/.claude.json":/home/node/.claude.json:z \
   -v "$HOME/.agents":/home/node/.agents:z \
   -w /workspace \
-  claude-dockerized
+  "$IMAGE"
