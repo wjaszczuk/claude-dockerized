@@ -13,38 +13,12 @@ RUN apt-get update && apt-get install -y \
     && apt-get update && apt-get install -y gh \
     && rm -rf /var/lib/apt/lists/*
 
-RUN corepack enable
-
 RUN mkdir -p /workspace && chown node:node /workspace
 
 ENV HOME=/home/node
 ENV PATH="/home/node/.local/bin:${PATH}"
 
 USER node
-
-RUN curl -fsSL https://claude.ai/install.sh | bash
-
-RUN npx skills add -y https://github.com/vercel-labs/skills --skill find-skills && \
-    npx skills add -y https://github.com/vercel-labs/agent-skills \
-      --skill vercel-react-best-practices --skill vercel-react-native-skills && \
-    npx skills add -y https://github.com/callstackincubator/agent-skills \
-      --skill react-native-best-practices && \
-    npx skills add -y https://github.com/obra/superpowers \
-      --skill brainstorming \
-      --skill systematic-debugging \
-      --skill writing-plans \
-      --skill test-driven-development \
-      --skill executing-plans \
-      --skill requesting-code-review \
-      --skill using-superpowers \
-      --skill subagent-driven-development \
-      --skill receiving-code-review \
-      --skill verification-before-completion \
-      --skill using-git-worktrees \
-      --skill writing-skills \
-      --skill dispatching-parallel-agents \
-      --skill finishing-a-development-branch && \
-    npx skills add -y https://github.com/jarrodwatts/claude-hud --skill claude-hud
 
 COPY --chown=node:node entrypoint.sh /home/node/entrypoint.sh
 RUN chmod +x /home/node/entrypoint.sh

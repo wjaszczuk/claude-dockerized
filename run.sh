@@ -18,6 +18,7 @@ $RUNTIME run -it --rm \
   -v "$(pwd)":/workspace:z \
   -v "$HOME/.gitconfig":/home/node/.gitconfig:ro,z \
   -v "$HOME/.ssh":/home/node/.ssh:ro,z \
+  -v claude-local:/home/node/.local:z \
   -v claude-config:/home/node/.claude:z \
   -v claude-agents:/home/node/.agents:z \
   -w /workspace \
