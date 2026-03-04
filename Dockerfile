@@ -21,6 +21,7 @@ USER node
 
 RUN curl -fsSL https://claude.ai/install.sh | bash
 
+ENV HOME=/home/node
 ENV PATH="/home/node/.local/bin:${PATH}"
 
 RUN npx skills add -y https://github.com/vercel-labs/skills --skill find-skills && \
