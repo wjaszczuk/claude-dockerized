@@ -5,7 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 VERSION="$(cat "$SCRIPT_DIR/VERSION")"
 
 echo "Building image claude-dockerized:$VERSION..."
-podman build --memory 4g \
+docker build --memory 4g \
   -t "claude-dockerized:$VERSION" \
   -t "claude-dockerized:latest" \
   "$SCRIPT_DIR"

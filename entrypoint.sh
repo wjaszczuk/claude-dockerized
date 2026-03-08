@@ -36,6 +36,7 @@ if [ ! -f ~/.claude/.skills-installed ]; then
     --skill writing-skills \
     --skill dispatching-parallel-agents \
     --skill finishing-a-development-branch
+  npx skills add -y https://github.com/wjaszczuk/agent-team-skills
   touch ~/.claude/.skills-installed
   echo "Skills installed."
 fi

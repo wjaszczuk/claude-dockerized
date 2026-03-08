@@ -138,6 +138,16 @@ docker compose down --volumes
 
 Version stored in `VERSION`. Build tags the image as `claude-dockerized:<version>` and `claude-dockerized:latest`. To bump: edit `VERSION` and rebuild.
 
+## Installed skills
+
+| Skill | Source |
+|-------|--------|
+| `find-skills` | vercel-labs/skills |
+| `vercel-react-best-practices`, `vercel-react-native-skills` | vercel-labs/agent-skills |
+| `react-native-best-practices` | callstackincubator/agent-skills |
+| `brainstorming`, `systematic-debugging`, `writing-plans`, `test-driven-development`, `executing-plans`, `requesting-code-review`, `using-superpowers`, `subagent-driven-development`, `receiving-code-review`, `verification-before-completion`, `using-git-worktrees`, `writing-skills`, `dispatching-parallel-agents`, `finishing-a-development-branch` | obra/superpowers |
+| `agent-team-skills` (team-plan + team-execute) | wjaszczuk/agent-team-skills |
+
 ## What's inside the image
 
 - `node:24-slim` + git + tmux + openssh-client + curl + nano + gh

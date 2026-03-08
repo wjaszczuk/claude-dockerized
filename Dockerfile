@@ -26,6 +26,8 @@ ENV PATH="/home/node/.local/bin:${PATH}"
 
 USER node
 
+RUN mkdir -p /home/node/.local/bin /home/node/.cache /home/node/.claude /home/node/.agents
+
 COPY --chown=node:node entrypoint.sh /home/node/entrypoint.sh
 RUN chmod +x /home/node/entrypoint.sh
 
