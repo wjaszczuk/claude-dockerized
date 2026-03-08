@@ -12,34 +12,14 @@ if [ ! -f ~/.local/bin/claude ]; then
   echo "Claude Code installed."
 fi
 
-# Install skills on first run (cd ~ so skills go to ~/.agents not ./agents)
-if [ ! -f ~/.claude/.skills-installed ]; then
-  echo "First run: installing skills..."
-  cd ~
-  npx skills add -y https://github.com/vercel-labs/skills --skill find-skills
-  npx skills add -y https://github.com/vercel-labs/agent-skills \
-    --skill vercel-react-best-practices --skill vercel-react-native-skills
-  npx skills add -y https://github.com/callstackincubator/agent-skills \
-    --skill react-native-best-practices
-  npx skills add -y https://github.com/obra/superpowers \
-    --skill brainstorming \
-    --skill systematic-debugging \
-    --skill writing-plans \
-    --skill test-driven-development \
-    --skill executing-plans \
-    --skill requesting-code-review \
-    --skill using-superpowers \
-    --skill subagent-driven-development \
-    --skill receiving-code-review \
-    --skill verification-before-completion \
-    --skill using-git-worktrees \
-    --skill writing-skills \
-    --skill dispatching-parallel-agents \
-    --skill finishing-a-development-branch
-  npx skills add -y https://github.com/wjaszczuk/agent-team-skills
-  touch ~/.claude/.skills-installed
-  echo "Skills installed."
-fi
+echo "Installing skills..."
+cd ~
+npx -y skills add --all https://github.com/vercel-labs/skills --skill find-skills
+npx -y skills add --all https://github.com/vercel-labs/agent-skills
+npx -y skills add --all https://github.com/callstackincubator/agent-skills
+npx -y skills add --all  https://github.com/obra/superpowers
+npx -y skills add --all  https://github.com/wjaszczuk/agent-team-skills
+echo "Skills installed."
 
 # Write default settings if not present
 if [ ! -f ~/.claude/settings.json ]; then
